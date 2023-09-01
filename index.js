@@ -11,6 +11,10 @@ const webSocket = new ws.Server({ server });
 
 webSocket.on('connection', (socket, request) => {
     console.log('new connection');
+
+    socket.on('message', (data, isBinary) => {
+        console.log(`Message Recieved : ${data.toString()}`);
+    });
 });
 
 app.get('/', (req, res) => {
